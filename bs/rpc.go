@@ -21,7 +21,7 @@ func (*bsService) Solve(request *http.Request, args *bsSolveArgs, reply *bsSolve
 	return
 }
 
-func RpcServer() *rpc.Server {
+func RpcServer() http.Handler {
 	rpcServer := rpc.NewServer()
 	rpcServer.RegisterCodec(json.NewCodec(), "application/json")
 	rpcServer.RegisterService(new(bsService), "bs")
