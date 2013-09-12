@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-type bsService struct {}
+type bsService struct{}
 
 type bsSolveArgs struct {
 	Board [][]int `json:"board"`

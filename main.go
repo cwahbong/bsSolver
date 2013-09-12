@@ -1,12 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"flag"
+	"fmt"
 	"github.com/cwahbong/bsSolver/bs"
-	"net/http"
 	"log"
+	"net/http"
 )
+
 type serverArgs struct {
 	Port           uint
 	StaticFilePath string
