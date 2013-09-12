@@ -2,25 +2,25 @@ package main
 
 import (
 	"fmt"
+	"flag"
 	"github.com/cwahbong/bsSolver/bs"
+	"net/http"
+	"log"
 )
+type serverArgs struct {
+	Port           uint
+	StaticFilePath string
+}
 
 func main() {
-	var n int
-	fmt.Scanf("%d", &n)
-	board := make([][]int, n)
-	for i := 0; i < n; i += 1 {
-		board[i] = make([]int, n)
-		for j := 0; j < n; j += 1 {
-			fmt.Scanf("%d", &board[i][j])
-		}
+	var args serverArgs
+	flag.UintVar(&args.Port, "port", 80, "Port.")
+	flag.StringVar(&args.StaticFilePath, "static-path", "./static/app/", "Static file path.")
+	flag.Parse()
+
+	http.Handle("/j", bs.RpcServer())
+	server := http.Server{
+		Addr: fmt.Sprintf(":%d", args.Port),
 	}
-	solution, err := bs.Solve(board)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("Solution size: %d\n", len(solution))
-	for _, line := range solution {
-		fmt.Printf("from (%d, %d), direction (%d, %d), len %d.\n", line.From.R, line.From.C, line.Direction.R, line.Direction.C, line.Len)
-	}
+	log.Fatal(server.ListenAndServe())
 }
