@@ -11,25 +11,38 @@ angular.module('bsApp', ['bsApp.controllers']).
 
 angular.module('bsApp.controllers', []).
   controller('BsCtrl', function($scope, $http) {
-    $scope.$watch(
-      'size', function(newValue, oldValue) {
-        $scope.map = [];
-        for (var i = 0; i < newValue; ++i) {
-          $scope.map[i] = [];
-          for (var j = 0; j < newValue; ++j) {
-            $scope.map[i][j] = -1;
-          }
+    $scope.$watch('size', function(newValue, oldValue) {
+      $scope.map = [];
+      for (var i = 0; i < newValue; ++i) {
+        $scope.map[i] = [];
+        for (var j = 0; j < newValue; ++j) {
+          $scope.map[i][j] = -1;
         }
       }
-    );
+    });
+    $scope.$watch('selected_code', function(newValue, oldValue) {
+      $scope.colors[oldValue-1].classes.selected = false;
+      $scope.colors[newValue-1].classes.selected = true;
+    });
     var colorMap = [
       "none",
       "red",
       "blue",
-      "yellow",
-    ]
+      "yellow,"
+    ];
     $scope.color = function(colorCode) {
       return colorMap[colorCode];
+    };
+    $scope.colors = [];
+    for (var i = 1; i <= 3; ++i) {
+      var classes = {selected: false};
+      classes[$scope.color(i)] = true;
+      var color = {code: i};
+      $scope.colors.push({code: i, classes: classes});
+    }
+    $scope.selected_code = 1;
+    $scope.select = function(colorCode) {
+      $scope.selected_code = colorCode;
     };
     $scope.submit = function() {
       $http.post('/j', {

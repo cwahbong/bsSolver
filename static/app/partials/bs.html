@@ -6,12 +6,15 @@
 <div class="right-pane">
 	<form class="form" ng-submit="submit()">
 		<input type="number" ng-model="size" name="size_input" min="3" max="7" ng-init="size=5" required>
-		<button type="submit">Calc!</button>
+		<div class="palette">
+			<span ng-repeat="c in colors" ng-class="c.classes" ng-click="select(c.code)"></span>
+		</div>
 		<table class="map">
 			<tr class="row" ng-repeat="row in map">
 				<td class="cell" ng-class="color(cell)" ng-repeat="cell in row">
 				</td>
 			</tr>
 		</table>
+		<button type="submit">Calc!</button>
 	</form>
 </div>

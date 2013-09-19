@@ -9,30 +9,23 @@ body {
   height: 100%;
 }
 
-.left-pane {
+.view>* {
   position: absolute;
-
-  top: 5%;
-  bottom: 5%;
-
-  left: 5%;
-  width: 30%;
+  top: 3%;
+  bottom: 3%;
 
   display: inline-block;
   overflow: auto;
 }
 
+.left-pane {
+  left: 5%;
+  width: 30%;
+}
+
 .right-pane {
-  position: absolute;
-
-  top: 5%;
-  bottom: 5%;
-
   width: 60%;
   right: 5%;
-
-  display: inline-block;
-  overflow: auto;
 }
 
 .form {
@@ -43,14 +36,32 @@ body {
   /* No support for these yet, use at own risk */
   -o-user-select: none;
   user-select: none;
+
+  text-align: center;
+}
+
+.form>* {
+  margin: 5px auto;
+}
+
+.palette>* {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 2px;
+}
+
+.palette>*:hover {
+  outline: 2px dashed black;
+}
+
+.palette>.selected {
+  outline: 2px solid black;
 }
 
 .map {
-  margin-left: auto;
-  margin-right: auto;
   border-collapse: collapse;
   border:1px solid black;
-  padding: 5px 5px 5px 5px;
 }
 
 .row {
@@ -64,10 +75,10 @@ body {
   border: 1px solid black;
 }
 
-.cell.red {
+.red {
   background: red;
 }
 
-.cell.blue {
+.blue {
   background: blue;
 }
