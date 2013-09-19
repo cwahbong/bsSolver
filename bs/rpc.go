@@ -11,7 +11,7 @@ import (
   1. Classes of service, args, and reply.
   2. Rpc method name.
   Otherwise gorilla will skip that.
- */
+*/
 type BsService struct{}
 
 type BsSolveArgs struct {

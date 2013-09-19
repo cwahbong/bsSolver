@@ -115,7 +115,7 @@ func solve(board [][]int) (solved bool, solution []Line) {
 					err = errors.New("blabla")
 					return
 				}
-				used[cur.R][cur.C] = true;
+				used[cur.R][cur.C] = true
 				result = append(result, cur)
 			}
 			cur.R += line.Direction.R
