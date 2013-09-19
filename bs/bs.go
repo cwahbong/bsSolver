@@ -89,14 +89,16 @@ func solve(board [][]int) (solved bool, solution []Line) {
 			return
 		}
 		for i := 0; i < line.Len; i += 1 {
-			if !used[cur.R][cur.C] && board[cur.R][cur.C] != board[line.From.R][line.From.C] {
-				restore(result)
-				result = nil
-				err = errors.New("blabla")
-				return
+			if !used[cur.R][cur.C] {
+				if board[cur.R][cur.C] != board[line.From.R][line.From.C] {
+					restore(result)
+					result = nil
+					err = errors.New("blabla")
+					return
+				}
+				used[cur.R][cur.C] = true;
+				result = append(result, cur)
 			}
-			used[cur.R][cur.C] = true
-			result = append(result, cur)
 			cur.R += line.Direction.R
 			cur.C += line.Direction.C
 		}
