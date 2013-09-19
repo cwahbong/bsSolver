@@ -1,0 +1,17 @@
+<div class="left-pane">
+	<ul ng-show="lines">
+		<li ng-repeat="line in lines">From: ({{line.From.R}}, {{line.From.C}}), Direction: ({{line.Direction.R}}, {{line.Direction.C}}), Len: {{line.Len}}</li>
+	</ul>
+</div>
+<div class="right-pane">
+	<form class="form" ng-submit="submit()">
+		<input type="number" ng-model="size" name="size_input" min="3" max="7" ng-init="size=5" required>
+		<button type="submit">Calc!</button>
+		<table class="map">
+			<tr class="row" ng-repeat="row in map">
+				<td class="cell" ng-class="color(cell)" ng-repeat="cell in row">
+				</td>
+			</tr>
+		</table>
+	</form>
+</div>

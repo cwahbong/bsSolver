@@ -19,6 +19,7 @@ func main() {
 	flag.StringVar(&args.StaticFilePath, "static-path", "./static/app/", "Static file path.")
 	flag.Parse()
 
+	http.Handle("/", http.FileServer(http.Dir(args.StaticFilePath)))
 	http.Handle("/j", bs.RpcServer())
 	server := http.Server{
 		Addr: fmt.Sprintf(":%d", args.Port),

@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+}
+
+.view {
+  position: fixed;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.left-pane {
+  position: absolute;
+
+  top: 5%;
+  bottom: 5%;
+
+  left: 5%;
+  width: 30%;
+
+  display: inline-block;
+  overflow: auto;
+}
+
+.right-pane {
+  position: absolute;
+
+  top: 5%;
+  bottom: 5%;
+
+  width: 60%;
+  right: 5%;
+
+  display: inline-block;
+  overflow: auto;
+}
+
+.form {
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+
+  /* No support for these yet, use at own risk */
+  -o-user-select: none;
+  user-select: none;
+}
+
+.map {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  border:1px solid black;
+  padding: 5px 5px 5px 5px;
+}
+
+.row {
+}
+
+.cell {
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  min-height: 60px;
+  border: 1px solid black;
+}
+
+.cell.red {
+  background: red;
+}
+
+.cell.blue {
+  background: blue;
+}
