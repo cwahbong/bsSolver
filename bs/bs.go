@@ -3,6 +3,7 @@ package bs
 import (
 	"errors"
 	"fmt"
+	"sort"
 )
 
 type Position struct {
@@ -14,6 +15,24 @@ type Line struct {
 	From      Position
 	Direction Position
 	Len       int
+}
+
+type Lines []Line
+
+func (l Lines) Len() int {
+	return len(l)
+}
+
+func (l Lines) Swap(i, j int) {
+	l[i], l[j] = l[j], l[i]
+}
+
+type LinesByLen struct {
+	Lines
+}
+
+func (s LinesByLen) Less(i, j int) bool {
+	return s.Lines[i].Len < s.Lines[j].Len
 }
 
 func valid(board [][]int) bool {
@@ -119,6 +138,7 @@ func solve(board [][]int) (solved bool, solution []Line) {
 				}
 			}
 		}
+		sort.Sort(sort.Reverse(LinesByLen{result}))
 		return
 	}
 
