@@ -10,9 +10,8 @@
 			<span ng-repeat="c in colors" ng-class="c.classes" ng-click="select(c.code)"></span>
 		</div>
 		<table class="map">
-			<tr class="row" ng-repeat="row in map">
-				<td class="cell" ng-class="color(cell)" ng-repeat="cell in row">
-				</td>
+			<tr class="row" ng-repeat="row in map" ng-init="rindex=$index">
+				<td class="cell" ng-class="color(cell)" ng-repeat="cell in row" ng-click="paint(rindex, $index)"></td>
 			</tr>
 		</table>
 		<button type="submit">Calc!</button>

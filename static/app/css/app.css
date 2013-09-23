@@ -75,10 +75,30 @@ body {
   border: 1px solid black;
 }
 
+.none {
+  background: grey;
+}
+
 .red {
   background: red;
 }
 
 .blue {
   background: blue;
+}
+
+.yellow {
+  background: yellow;
+}
+
+.orange {
+  background: orange;
+}
+
+.green {
+  background: green;
+}
+
+.purple {
+  background: purple;
 }

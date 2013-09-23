@@ -16,7 +16,7 @@ angular.module('bsApp.controllers', []).
       for (var i = 0; i < newValue; ++i) {
         $scope.map[i] = [];
         for (var j = 0; j < newValue; ++j) {
-          $scope.map[i][j] = -1;
+          $scope.map[i][j] = 0;
         }
       }
     });
@@ -28,13 +28,16 @@ angular.module('bsApp.controllers', []).
       "none",
       "red",
       "blue",
-      "yellow,"
+      "yellow",
+      "orange",
+      "green",
+      "purple",
     ];
     $scope.color = function(colorCode) {
       return colorMap[colorCode];
     };
     $scope.colors = [];
-    for (var i = 1; i <= 3; ++i) {
+    for (var i = 1; i <= colorMap.length-1; ++i) {
       var classes = {selected: false};
       classes[$scope.color(i)] = true;
       var color = {code: i};
@@ -44,6 +47,9 @@ angular.module('bsApp.controllers', []).
     $scope.select = function(colorCode) {
       $scope.selected_code = colorCode;
     };
+    $scope.paint = function(r, c) {
+      $scope.map[r][c] = $scope.selected_code;
+    }
     $scope.submit = function() {
       $http.post('/j', {
         method: "bs.Solve",
